@@ -7,9 +7,14 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('categories');
+  this.route('categories', function() {
+    this.route('edit');
+  });
+  this.route('category', {path: 'categories/:category_id'});
   this.route('manufacturers');
-  this.route('products');
+  this.route('products', function() {
+    this.route('new');
+  });
   this.route('productAssets');
 });
 

@@ -1,0 +1,101 @@
+@import "bootstrap";
+
+body {
+    padding-top: 20px;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+.navbar-inverse {
+    background-color: black;
+}
+
+.panel-body {
+    background-color: whitesmoke;
+}
+
+.panel-default > .panel-heading {
+    background: black; 
+    color: #fff;
+}
+
+.panel-footer {
+    background-color: #fefff6;
+}
+
+
+.panel-title {
+    color: white;
+}
+
+.form-control {
+    max-width: 100%;
+}
+
+.checkbox {
+    margin-left: 20px;
+}
+
+.product-item {
+    min-height: 150px;
+}
+
+.product-desc {
+    min-height: 60px;
+}
+
+.category-box {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 2px 2px 2px 8px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.category1 {
+    background-color: #a66e25;
+}
+.category2 {
+    background-color: #846571;
+}
+.category3 {
+    background-color: #788a6d;
+}
+.category4 {
+    background-color: #565e69;
+}
+.category5 {
+    background-color: #496793;
+}
+.category6 {
+    background-color: #6f8443;
+}
+.category7 {
+    background-color: #7e6c3c;
+}
+.category8 {
+    background-color: #974637;
+}
+.category9 {
+    background-color: #a690ab;
+}
+.category10 {
+    background-color: #ffac9f;
+}
+.category11 {
+    background-color: #67a5e5;
+}
+.category12 {
+    background-color: #7a71e9;
+}
+.category13 {
+    background-color: #e58100;
+}
+.category14 {
+    background-color: #d2002d;
+}
+.category15 {
+    background-color: #827565;
+}

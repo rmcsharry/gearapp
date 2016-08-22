@@ -5,7 +5,9 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   weight: DS.attr('number'),
   weightType: DS.attr('string'),
-  is_shared: DS.attr('boolean'),
-  shared_capacity: DS.attr('number'),
-  productAssets: DS.hasMany('productAsset')
+  isShared: DS.attr('boolean'),
+  sharedCapacity: DS.attr('number'),
+  productAssets: DS.hasMany('productAsset'),
+  category: DS.belongsTo('category', { async: true }),
+  manufacturer: DS.belongsTo('manufacturer', { async: true })
 });

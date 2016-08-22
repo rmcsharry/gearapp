@@ -1,0 +1,76 @@
+<div class="col-sm-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Add some spanky new gear</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                {{input type="text" value=model.name class="form-control" placeholder="The name of the item" required="required"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Description</label>
+                            <div class="col-sm-10">
+                                {{textarea rows="4" value=model.descriptions class="form-control" placeholder="Describe this awesome piece of gear"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Weight</label>
+                            <div class="col-sm-4">
+                                {{input type="text" value=model.weight class="form-control" placeholder="The item's weight"}}
+                            </div>
+                            <label class="col-sm-2 control-label">in</label>
+                            <div class="col-sm-4">
+                                {{input type="option" value=model.weight_type class="form-control"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Shareable?</label>
+                            <div class="col-sm-1 checkbox">
+                                {{input type="checkbox" checked=model.isShared}}
+                            </div>
+                            <label class="col-sm-1 control-label">Capacity</label>
+                            <div class="col-sm-7 pull-right">
+                                {{input type="text" value=model.sharedCapacity class="form-control" placeholder="The number of people that can share this"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Manufacturer</label>
+                            <div class="col-sm-10">
+                                {{input type="select" value=model.manufacturer class="form-control"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </form>
+        </div>
+        <div class="panel-footer">
+            <div class="panel-title pull-right">
+                <button type="submit" class="btn btn-success" {{action 'saveProduct' model}}>Add this gear</button>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+    </div>
+</div>
