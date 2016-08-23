@@ -1,0 +1,52 @@
+
+<div class="panel panel-default product-card">
+    <div class="panel-heading">
+        <h3 class="panel-title pull-left">
+            {{product.name}}
+        </h3>
+        <div class="pull-right category-box category{{product.category.id}}">
+        </div> 
+        <h3 class="panel-title pull-right">
+            {{#link-to 'categories.edit' product.category.id}}<a href="">{{product.category.name}}</a>{{/link-to}}
+        </h3>
+        <div class="clearfix">
+        </div>
+    </div>
+    <div class="panel-body">
+        <p class="product-desc">Description
+            <br/>     
+            {{#if product.description}}
+                {{product.description}}
+            {{else}}
+                <em>no description</em>
+            {{/if}}
+        </p>
+        <p>Features</p>
+        <ul>
+            <li>Weight : {{product.weight}} {{product.weightType}}</li>
+            <li>Shareable? : 
+                {{#if product.is_shared}} 
+                    Yes - {{product.shared_capacity}} ppl
+                {{else}} 
+                    No
+                {{/if}}
+            </li>                      
+        </ul>
+        <br/>
+        <small>Manufactured by 
+            {{#if product.manufacturer}}
+                {{product.manufacturer.name}}
+            {{else}}
+                <em>unknown</em>
+            {{/if}}
+        </small>                                      
+    </div>
+    <div class="panel-footer">
+        <div class="panel-title pull-right">
+            {{yield}}
+        </div>
+        <div class="clearfix">
+        </div>               
+    </div>
+</div>
+

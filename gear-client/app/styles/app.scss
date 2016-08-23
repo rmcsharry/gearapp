@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "ember-power-select";
 
 body {
     padding-top: 20px;
@@ -38,7 +39,7 @@ html {
     margin-left: 20px;
 }
 
-.product-item {
+.product-card {
     min-height: 150px;
 }
 
