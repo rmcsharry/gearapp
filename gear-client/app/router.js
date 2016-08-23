@@ -11,11 +11,14 @@ Router.map(function() {
     this.route('edit');
   });
   this.route('category', { path: 'categories/:category_id'} );
+
   this.route('manufacturers');
+
   this.route('products', function() {
     this.route('new');
     this.route('edit', { path: '/:product_id/edit'});
   });
+  
   this.route('productAssets');
 });
 

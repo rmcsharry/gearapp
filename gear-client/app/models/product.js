@@ -9,5 +9,6 @@ export default DS.Model.extend({
   sharedCapacity: DS.attr('number'),
   productAssets: DS.hasMany('productAsset'),
   category: DS.belongsTo('category', { async: true }),
-  manufacturer: DS.belongsTo('manufacturer', { async: true })
+  manufacturer: DS.belongsTo('manufacturer', { async: true }),
+
 });
