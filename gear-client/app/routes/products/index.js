@@ -8,8 +8,15 @@ export default Ember.Route.extend({
     actions: {
 
         deleteProduct(product) {
-            let confirmation = confirm(product.get('name').toString() + ' will be vaporized. Are you sure?');
-
+            let msg = null;
+            if (product.get('name')) {
+                msg = product.get('name').toString();
+            }
+            else {
+                msg = 'It';
+            };
+            let confirmation = confirm(msg + ' will be vaporized. Are you sure?');
+            
             if (confirmation) {
                 product.destroyRecord();
             }

@@ -24,9 +24,9 @@
         <p>Features</p>
         <ul>
             <li>Weight : {{product.weight}} {{product.weightType}}</li>
-            <li>Shareable? : 
-                {{#if product.is_shared}} 
-                    Yes - {{product.shared_capacity}} ppl
+            <li>Shareable?
+                {{#if product.isShareable}} 
+                    Yes - {{product.sharedCapacity}} ppl
                 {{else}} 
                     No
                 {{/if}}

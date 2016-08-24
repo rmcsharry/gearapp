@@ -2,9 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-    model(params) {
-        return this.store.findRecord('product', params.product_id);
-    },
+    model: function(params) {
+        return Ember.RSVP.hash({
+            product: this.store.findRecord('product', params.product_id),
+            categories: this.store.findAll('category'),
+            manufacturers: this.store.findAll('manufacturer')            
+        });
+    },    
 
     actions: {
 

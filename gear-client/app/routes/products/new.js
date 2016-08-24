@@ -1,9 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    categories: ["one","two"],
-    model() {
-        return this.store.createRecord('product');
+    
+    model: function() {
+        return Ember.RSVP.hash({
+            product: this.store.createRecord('product'),
+            categories: this.store.findAll('category'),
+            manufacturers: this.store.findAll('manufacturer')
+        });
     },
  
     actions: {
@@ -14,11 +18,7 @@ export default Ember.Route.extend({
 
         willTransition() {
             // rollback will remove the record from the store
-            this.controller.get('model').rollbackAttributes();
-        },
-
-        chooseCategory() {
-            alert('choose');
+            this.controller.get('model.product').rollbackAttributes();
         }
     }
 });

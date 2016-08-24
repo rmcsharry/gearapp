@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
@@ -11,4 +12,5 @@ export default DS.Model.extend({
   category: DS.belongsTo('category', { async: true }),
   manufacturer: DS.belongsTo('manufacturer', { async: true }),
 
+  isShareable: Ember.computed.equal('isShared', true)
 });

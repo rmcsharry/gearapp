@@ -1,1 +1,94 @@
-{{yield}}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>{{heading}}</strong>
+    </div>
+    <form class="form-horizontal">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            {{input type="text" value=product.name class="form-control" placeholder="The name of the item" required="required"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            {{textarea rows="4" value=product.descriptions class="form-control" placeholder="Describe this awesome piece of gear"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Weight</label>
+                        <div class="col-sm-3">
+                            {{input type="text" value=product.weight class="form-control" placeholder="The item's weight"}}
+                        </div>
+                        <div class="col-sm-4 radio pull-left">
+                            {{radio-button value="grams" groupValue=product.weightType class="form-control"}}grams
+                            &ensp;
+                            {{#radio-button value="ounces" groupValue=product.weightType class="form-control"}}ounces
+                            {{/radio-button}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Shareable?</label>
+                        <div class="col-sm-1 checkbox">
+                            {{input type="checkbox" checked=product.isShared}}
+                        </div>
+                        <label class="col-sm-2 control-label">Share capacity</label>
+                        <div class="col-sm-6 pull-right">
+                            {{input type="text" value=product.sharedCapacity class="form-control" placeholder="The number of people that can share this"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Manufacturer</label>
+                        <div class="col-sm-10">
+                            {{#power-select options=manufacturers
+                                selected=product.manufacturer 
+                                onchange=(action (mut product.manufacturer)) as |manufacturer| }}
+                                {{manufacturer.name}} 
+                            {{/power-select}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Category</label>
+                        <div class="col-sm-10">
+                            {{#power-select options=categories
+                                selected=product.category 
+                                onchange=(action (mut product.category)) as |category| }}
+                                {{category.name}}
+                            {{/power-select}}
+                        </div>
+                    </div>
+                </div>
+            </div>                                
+        </div>
+        <div class="panel-footer">
+            <div class="panel-title pull-right">
+                {{yield}}
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+    </form>
+</div>
