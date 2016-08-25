@@ -1,5 +1,6 @@
 <div class="col-sm-8">
     {{#product-form product=model.product manufacturers=model.manufacturers categories=model.categories heading=formTitle}}
+        {{#link-to 'products' class="btn btn-warning"}}Abort{{/link-to}}
         <button type="submit" class="btn btn-success" {{action 'saveProduct' model.product}}>{{saveLabel}}</button>
     {{/product-form}}
 </div>

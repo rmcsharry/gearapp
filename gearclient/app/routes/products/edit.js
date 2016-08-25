@@ -29,13 +29,13 @@ export default Ember.Route.extend({
 
         willTransition(transition) {
 
-            let model = this.controller.get('model');
+            let product = this.controller.get('model.product');
 
-            if (model.product.get('hasDirtyAttributes')) {
-                let confirmation = confirm('Changes not saved. Abandon the mod?');
+            if (product.get('hasDirtyAttributes')) {
+                let confirmation = confirm('Changes not saved. Abandon your operation?');
 
                 if (confirmation) {
-                    model.rollbackAttributes();
+                    product.rollbackAttributes();
                 } else {
                     transition.abort();
                 }
