@@ -9,6 +9,17 @@ export default Ember.Route.extend({
             manufacturers: this.store.findAll('manufacturer')
         });
     },
+
+    setupController: function (controller, model) {
+        this._super(controller, model);
+
+        controller.set('formTitle', 'Add a new piece of gear');
+        controller.set('saveLabel', 'Create gear');
+    },
+
+    renderTemplate() {
+        this.render('products/product-page');
+    },
  
     actions: {
 
