@@ -14,7 +14,7 @@ export default Ember.Route.extend({
         this._super(controller, model);
 
         controller.set('formTitle', 'Add a new piece of gear');
-        controller.set('saveLabel', 'Create gear');
+        controller.set('saveLabel', 'CREATE');
     },
 
     renderTemplate() {
@@ -24,7 +24,12 @@ export default Ember.Route.extend({
     actions: {
 
         saveProduct(newProduct) {
-            newProduct.save().then(() => this.transitionTo('products'));
+            if (newProduct.get('isValid')) {
+                newProduct.save().then(() => this.transitionTo('products'));
+            }
+            else {
+                alert("Not valid - please provide a name and manufacturer.");
+            }
         },
 
         willTransition() {

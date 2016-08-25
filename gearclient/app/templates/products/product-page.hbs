@@ -1,11 +1,11 @@
 <div class="col-sm-8">
     {{#product-form product=model.product manufacturers=model.manufacturers categories=model.categories heading=formTitle}}
-        {{#link-to 'products' class="btn btn-warning"}}Abort{{/link-to}}
+        {{#link-to 'products' class="btn btn-warning"}}ABORT{{/link-to}}
         <button type="submit" class="btn btn-success" {{action 'saveProduct' model.product}}>{{saveLabel}}</button>
     {{/product-form}}
 </div>
 <div class="col-sm-4">
     {{#product-card product=model.product}}
-        <br/>
+        <br/> 
     {{/product-card}}
 </div>

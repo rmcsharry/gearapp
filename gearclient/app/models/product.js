@@ -11,6 +11,6 @@ export default DS.Model.extend({
   productAssets: DS.hasMany('productAsset'),
   category: DS.belongsTo('category', { async: true }),
   manufacturer: DS.belongsTo('manufacturer', { async: true }),
-
-  isShareable: Ember.computed.equal('isShared', true)
+  isShareable: Ember.computed.equal('isShared', true),
+  isValid: Ember.computed.and('name', 'category.id')
 });

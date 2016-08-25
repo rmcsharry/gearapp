@@ -14,7 +14,7 @@ export default Ember.Route.extend({
         this._super(controller, model);
 
         controller.set('formTitle', 'Mod this piece of gear');
-        controller.set('saveLabel', 'Mod this gear');
+        controller.set('saveLabel', 'COMMIT MOD');
     },
 
     renderTemplate() {
@@ -24,7 +24,12 @@ export default Ember.Route.extend({
     actions: {
 
         saveProduct(newProduct) {
-            newProduct.save().then(() => this.transitionTo('products'));
+            if (newProduct.get('isValid')) {
+                newProduct.save().then(() => this.transitionTo('products'));
+            }
+            else {
+                alert("Not valid - please provide at minimum a NAME and CATEGORY.");
+            }
         },
 
         willTransition(transition) {
