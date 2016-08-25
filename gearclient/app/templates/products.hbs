@@ -1,12 +1,16 @@
 <h3>Gear</h3>
 
-<div class="well">
-    <ul class="nav nav-pills">
-      {{#link-to 'products.index' tagName="li"}}<a href="">All the gear</a>{{/link-to}}
-      {{#link-to 'products.new' tagName="li"}}<a href="">Add spanky new gear</a>{{/link-to}}
-    </ul>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="well">
+            <ul class="nav nav-pills">
+              {{#nav-link-to 'products.index'}}All gear{{/nav-link-to}}
+              {{#nav-link-to 'products.new'}}Add new gear{{/nav-link-to}}
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-  {{outlet}}
+    {{outlet}}
 </div>

@@ -7,15 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {{#link-to 'index' class="navbar-brand"}}Galactic Gear App{{/link-to}}
+      {{#link-to 'index' class="navbar-brand"}}Galaxy Gear App{{/link-to}}
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
-            {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
-            {{#link-to 'products' tagName="li"}}<a href="">Gear</a>{{/link-to}}
-            {{#link-to 'categories' tagName="li"}}<a href="">Categories</a>{{/link-to}}
-            {{#link-to 'manufacturers' tagName="li"}}<a href="">Manufacturers</a>{{/link-to}}
+            {{#nav-link-to 'dashboard'}}Dashboard{{/nav-link-to}}
+            {{#nav-link-to 'products'}}Gear{{/nav-link-to}}
+            {{#nav-link-to 'categories'}}Categories{{/nav-link-to}}
+            {{#nav-link-to 'manufacturers'}}Manufacturers{{/nav-link-to}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
