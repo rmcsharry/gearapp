@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820221255) do
+ActiveRecord::Schema.define(version: 20160825224834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,18 +39,17 @@ ActiveRecord::Schema.define(version: 20160820221255) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "manufacturer_id"
-    t.integer  "category_id",                               null: false
-    t.string   "name",                                      null: false
+    t.integer  "category_id",                                                         null: false
+    t.string   "name",                                                                null: false
     t.string   "description"
-    t.decimal  "weight"
-    t.boolean  "is_shared",                 default: false
-    t.integer  "shared_capacity", limit: 2, default: 0
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.integer  "weight_type",               default: 1
+    t.boolean  "is_shared",                                           default: false
+    t.integer  "shared_capacity", limit: 2,                           default: 0
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.decimal  "weight_value",               precision: 10, scale: 2
+    t.string   "weight_unit",     limit: 12,                          default: "g"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["manufacturer_id"], name: "index_products_on_manufacturer_id", using: :btree
-    t.index ["weight_type"], name: "index_products_on_weight_type", using: :btree
   end
 
 end

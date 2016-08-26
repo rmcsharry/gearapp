@@ -1,4 +1,4 @@
-class DropWeightUnitFromProducts < ActiveRecord::Migration[5.0]
+class DeleteWeightUnitFromProducts < ActiveRecord::Migration[5.0]
   def up
     remove_column :products, :weight_unit
   end
