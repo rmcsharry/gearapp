@@ -4,8 +4,8 @@ import Ember from 'ember';
 export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
-  weight: DS.attr('number'),
-  weightType: DS.attr('string'),
+  weightValue: DS.attr('number'),
+  weightUnit: DS.attr('string'),
   isShared: DS.attr('boolean'),
   sharedCapacity: DS.attr('number'),
   productAssets: DS.hasMany('productAsset'),

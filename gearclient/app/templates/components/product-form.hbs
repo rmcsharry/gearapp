@@ -29,12 +29,12 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Weight</label>
                         <div class="col-sm-3">
-                            {{input type="text" value=product.weight class="form-control" placeholder="The item's weight"}}
+                            {{input type="text" value=product.weightValue class="form-control" placeholder="The item's weight"}}
                         </div>
                         <div class="col-sm-4 radio pull-left">
-                            {{radio-button value="grams" groupValue=product.weightType class="form-control"}}grams
+                            {{radio-button value="g" groupValue=product.weightUnit class="form-control"}}grams
                             &ensp;
-                            {{#radio-button value="ounces" groupValue=product.weightType class="form-control"}}ounces
+                            {{#radio-button value="oz" groupValue=product.weightUnit class="form-control"}}ounces
                             {{/radio-button}}
                         </div>
                     </div>
