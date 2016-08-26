@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount_ember_app :gearclient, to: "/"
+
   resources :product_assets
   resources :products
   resources :categories
