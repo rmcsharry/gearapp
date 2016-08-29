@@ -11,80 +11,105 @@ in 'relationships' object nodes.
 
 ### List All Products [GET]
 
+Returns all products and their related objects (if they exist).
+
+Paging is not currently supported.
+
+#### Required:
+
+    None.
+
+#### Relationship objects:
+
+    None (returned in response body).
+
+
 + Response 200 (application/json)
 
-        {
-           "data":[
-              {
-                 "id":"3",
-                 "type":"products",
-                 "attributes":{
-                    "name":"LoneTrooper Tent",
-                    "description":"Ideal for Troopers going off on lone suicidal missions. Automatically returns to us when you die. The Empire must recycle!",
-                    "is-shared":false,
-                    "shared-capacity":0,
-                    "weight-value":"1000.0",
-                    "weight-unit":"g"
-                 },
-                 "relationships":{
-                    "manufacturer":{
-                       "data":{
-                          "id":"1",
-                          "type":"manufacturers"
-                       }
-                    },
-                    "category":{
-                       "data":{
-                          "id":"2",
-                          "type":"categories"
-                       }
-                    },
-                    "product-assets":{
-                       "data":[
+    + Body
         
-                       ]
-                    }
-                 }
-              },
-              {
-                 "id":"4",
-                 "type":"products",
-                 "attributes":{
-                    "name":"Squad Tent",
-                    "description":"Perfect for that cosy squad feeling after a hard day killing Rebel Scum",
-                    "is-shared":true,
-                    "shared-capacity":4,
-                    "weight-value":"2000.0",
-                    "weight-unit":"g"
-                 },
-                 "relationships":{
-                    "manufacturer":{
-                       "data":{
-                          "id":"1",
-                          "type":"manufacturers"
-                       }
-                    },
-                    "category":{
-                       "data":{
-                          "id":"2",
-                          "type":"categories"
-                       }
-                    },
-                    "product-assets":{
-                       "data":[
-        
-                       ]
-                    }
-                 }
-              }
-           ]
-        }
+            {
+               "data":[
+                  {
+                     "id":"3",
+                     "type":"products",
+                     "attributes":{
+                        "name":"LoneTrooper Tent",
+                        "description":"Ideal for Troopers going off on lone suicidal missions. Automatically returns to us when you die. The Empire must recycle!",
+                        "is-shared":false,
+                        "shared-capacity":0,
+                        "weight-value":"1000.0",
+                        "weight-unit":"g"
+                     },
+                     "relationships":{
+                        "manufacturer":{
+                           "data":{
+                              "id":"1",
+                              "type":"manufacturers"
+                           }
+                        },
+                        "category":{
+                           "data":{
+                              "id":"2",
+                              "type":"categories"
+                           }
+                        },
+                        "product-assets":{
+                           "data":[
+            
+                           ]
+                        }
+                     }
+                  },
+                  {
+                     "id":"4",
+                     "type":"products",
+                     "attributes":{
+                        "name":"Squad Tent",
+                        "description":"Perfect for that cosy squad feeling after a hard day killing Rebel Scum",
+                        "is-shared":true,
+                        "shared-capacity":4,
+                        "weight-value":"2000.0",
+                        "weight-unit":"g"
+                     },
+                     "relationships":{
+                        "manufacturer":{
+                           "data":{
+                              "id":"1",
+                              "type":"manufacturers"
+                           }
+                        },
+                        "category":{
+                           "data":{
+                              "id":"2",
+                              "type":"categories"
+                           }
+                        },
+                        "product-assets":{
+                           "data":[
+            
+                           ]
+                        }
+                     }
+                  }
+               ]
+            }
+
+## Product [/products/{product_id}.json]
+
+### View a Product [GET]
+
+
+
++ Response 200 (application/json)
+
+    + Body
 
 ### Create a New Product [POST]
 
 Accepts a single object containing a product and two relationship objects.
 
-#### Required fields:
+#### Required:
 
     String: name (cannot be blank/null/empty)
 
@@ -100,44 +125,46 @@ Accepts a single object containing a product and two relationship objects.
 
 + Request (application/json)
 
-        {
-           "data":{
-              "attributes":{
-                 "name":"test",
-                 "description":null,
-                 "weight-value":null,
-                 "weight-unit":null,
-                 "is-shared":false,
-                 "shared-capacity":null
-              },
-              "relationships":{
-                 "category":{
-                    "data":{
-                       "type":"categories",
-                       "id":"7"
-                    }
-                 },
-                 "manufacturer":{
-                    "data":{
-                       "type":"manufacturers",
-                       "id":"1"
-                    }
-                 }
-              },
-              "type":"products"
-           }
-        }
+    + Body
+    
+            {
+               "data":{
+                  "attributes":{
+                     "name":"test",
+                     "description":null,
+                     "weight-value":null,
+                     "weight-unit":null,
+                     "is-shared":false,
+                     "shared-capacity":null
+                  },
+                  "relationships":{
+                     "category":{
+                        "data":{
+                           "type":"categories",
+                           "id":"7"
+                        }
+                     },
+                     "manufacturer":{
+                        "data":{
+                           "type":"manufacturers",
+                           "id":"1"
+                        }
+                     }
+                  },
+                  "type":"products"
+               }
+            }
 
 + Response 201 (application/json)
 
     + Body
-
+    
             {
                "data":{
                   "id":"20",
                   "type":"products",
                   "attributes":{
-                     "name":"test2",
+                     "name":"test",
                      "description":null,
                      "is-shared":false,
                      "shared-capacity":null,
