@@ -131,10 +131,11 @@ Deletes the product with the given product_id. No body required.
 
     None (returned in response body)
 
+
++ Request (application/json)
+
 + Response 204 (application/json)
 
-    + Body
-    
 
 ### Create a New Product [POST]
 
@@ -224,7 +225,7 @@ Accepts a data object containing a product and the ids of its related objects.
             }
             
 
-### Delete a New Product [DELETE]
+### Update a New Product [PATCH]
 
 Supply the ID of the product to delete at the end of the url. No body required.
 
