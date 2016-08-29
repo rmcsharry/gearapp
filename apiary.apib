@@ -97,8 +97,26 @@ Paging is not currently supported.
 
 ## Product [/products/{product_id}.json]
 
++ Parameters
+    + product_id (number) - id of the product as an integer
+
 ### View a Product [GET]
 
+Returns a product and its related object ids (if they exist).
+
+#### Required:
+
+    String: name (cannot be blank/null/empty)
+
+#### Relationship objects:
+
+    Category (required): the category id
+    Manufacturer (optional): the manufacturer id. Can be null it not needed, eg:
+    
+    "manufacturer":{
+        "data":null
+        }
+     }
 
 
 + Response 200 (application/json)
