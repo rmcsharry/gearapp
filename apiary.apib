@@ -124,7 +124,7 @@ Creates a new product in the products collection with the provided data object a
 
 ```product_assets``` are not fully implemented and currently will return a null object in the response.
 
-The response data object will contain the id and type of the newly created product.
+The root of the response data object will contain the id and type of the newly created product.
 
 + Request (application/json)
 
@@ -279,7 +279,7 @@ Updates a product (if it exists) and returns the updated data.
 
 ```category``` : the category_id (required, category must already exist)
 
-```manufacturer``` : the manufacturer_id. Can be null it not needed, eg:
+```manufacturer``` : the manufacturer_id. Can be null if not needed, eg:
     
         "manufacturer":{
             "data":null
@@ -292,16 +292,16 @@ Updates a product (if it exists) and returns the updated data.
 
 ```product_assets``` are not fully implemented and currently will return a null object in the response.
 
+The root of the response data object will contain the id and type of the updated product. The request payload could also include them and the update would still work.
+
 + Request (application/json)
 
     + Body
             
             {
                "data":{
-                  "id":"2",
-                  "type":"products",
                   "attributes":{
-                     "name":"Munitions Belt Test",
+                     "name":"Munitions Belt TestORama",
                      "description":"Easy access to the ammo you need.",
                      "is-shared":false,
                      "shared-capacity":0,
