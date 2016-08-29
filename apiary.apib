@@ -117,11 +117,42 @@ Returns a product and its related object ids (if they exist).
 + Response 200 (application/json)
 
     + Body
-
+    
+            {
+              "data": {
+                "id": "5",
+                "type": "products",
+                "attributes": {
+                  "name": "Platoon Tent",
+                  "description": "Built in forcefiled protection for your entire platoon!",
+                  "is-shared": true,
+                  "shared-capacity": 20,
+                  "weight-value": "10000.0",
+                  "weight-unit": "g"
+                },
+                "relationships": {
+                  "manufacturer": {
+                    "data": {
+                      "id": "1",
+                      "type": "manufacturers"
+                    }
+                  },
+                  "category": {
+                    "data": {
+                      "id": "2",
+                      "type": "categories"
+                    }
+                  },
+                  "product-assets": {
+                    "data": []
+                  }
+                }
+              }
+            }
 
 ### Delete a Product [DELETE]
 
-Deletes the product with the given product_id. No body required.
+Deletes the product with the given product_id.
 
 #### Required:
 
@@ -131,13 +162,12 @@ Deletes the product with the given product_id. No body required.
 
     None (returned in response body)
 
-
 + Request (application/json)
 
 + Response 204 (application/json)
 
 
-### Create a New Product [POST]
+### Create a new Product [POST]
 
 Accepts a data object containing a product and the ids of its related objects.
 
@@ -162,7 +192,7 @@ Accepts a data object containing a product and the ids of its related objects.
             {
                "data":{
                   "attributes":{
-                     "name":"test",
+                     "name":"Test Item",
                      "description":null,
                      "weight-value":null,
                      "weight-unit":null,
@@ -196,7 +226,7 @@ Accepts a data object containing a product and the ids of its related objects.
                   "id":"20",
                   "type":"products",
                   "attributes":{
-                     "name":"test",
+                     "name":"Test Item",
                      "description":null,
                      "is-shared":false,
                      "shared-capacity":null,
@@ -225,7 +255,7 @@ Accepts a data object containing a product and the ids of its related objects.
             }
             
 
-### Update a New Product [PATCH]
+### Update a Product [PATCH]
 
 Supply the ID of the product to delete at the end of the url. No body required.
 
