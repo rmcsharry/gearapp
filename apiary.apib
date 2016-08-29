@@ -169,7 +169,7 @@ Deletes the product with the provided product_id (if it exists).
 
 ### Create a new Product [POST]
 
-Accepts a data object containing a product and the ids of its related objects.
+Creates a new product with the provided data object and the ids of its related objects.
 
 #### Required:
 
@@ -264,15 +264,29 @@ Accepts a data object containing a product and the ids of its related objects.
 
 ### Update a Product [PATCH]
 
-Supply the ID of the product to delete at the end of the url. No body required.
+Updates the product with the provided id (if it exists) and returns the updated data.
 
 #### Required fields:
 
-    ProductID: at the end of the url
+```product_id``` : at the end of the url
 
 #### Relationship objects:
 
-    None
+```category``` : the category_id (required, category must already exist)
+
+```manufacturer``` : the manufacturer_id. Can be null it not needed, eg:
+    
+        "manufacturer":{
+            "data":null
+            }
+         }
+    
+```product_assets``` : an array of images, PDF's etc related to the product.
+    
+**NOTE**
+
+```product_assets``` are not fully implemented and currently will return a null object in the response.
+
     
 + Request (application/json)
 
