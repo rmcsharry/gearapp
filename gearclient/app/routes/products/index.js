@@ -5,23 +5,15 @@ export default Ember.Route.extend({
         return this.store.findAll('product');
     },
 
+    // need to do this until routeable components are available
+    setupController(controller) {
+        this._super(...arguments);
+        controller.set('productIndexRoute', this);
+    },
+    
     actions: {
-
         deleteProduct(product) {
-            let msg = null;
-            
-            if (product.get('name')) {
-                msg = product.get('name').toString();
-            }
-            else {
-                msg = 'It';
-            }
-
-            let confirmation = confirm(msg + ' will be vaporized. Are you sure?');
-            
-            if (confirmation) {
-                product.destroyRecord();
-            }
+            product.destroyRecord();
         }
     }
 });

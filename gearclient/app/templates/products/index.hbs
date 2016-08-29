@@ -1,8 +1,18 @@
 {{#each model as |product|}}
     <div class="col-md-4">
         {{#product-card product=product}}
-            <button class="btn btn-danger btn-xs" {{action 'deleteProduct' product}}>VAPORIZE</button>                     
-            {{#link-to 'products.edit' product.id class='btn btn-success btn-xs'}}MOD{{/link-to}}
+            <!-- <button class="btn btn-danger btn-xs" {{action 'deleteProduct' product}}>VAPORIZE</button> -->                   
+            <div class="row">
+                <div class="col-md-8">
+                    &nbsp;
+                </div>
+                <div class="col-md-2">
+                    {{delete-confirm-dialog classSet='btn btn-danger btn-xs' text='VAPORIZE' confirmTitle='Vaporizing is final!' objectToDelete=product onConfirm=(action 'deleteProduct' target=productIndexRoute)}}          
+                </div>
+                <div class="col-md-2">
+                    {{#link-to 'products.edit' product.id class='btn btn-success btn-xs'}}MOD{{/link-to}}
+                </div>
+            </div>
         {{/product-card}}
     </div>
 {{/each}}
