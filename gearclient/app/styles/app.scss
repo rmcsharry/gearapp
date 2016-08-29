@@ -5,8 +5,12 @@ body {
     padding-top: 20px;
 }
 
-html {
-    overflow-y: scroll;
+// html {
+//     overflow-y: scroll;
+// }
+
+.container {
+    width: 100%;
 }
 
 .navbar-inverse {
@@ -18,7 +22,7 @@ html {
 }
 
 .panel-default > .panel-heading {
-    background: black; 
+    background: #212121; 
     color: #fff;
 }
 
@@ -26,6 +30,21 @@ html {
     background-color: #fefff6;
 }
 
+.modal-content {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.modal-header {
+    background-color: #212121;
+    border-radius: 4px;
+    color: white;
+}
+
+.modal-footer {
+    background-color: #fefff6;
+    border-radius: 4px;
+}
 
 .panel-title {
     color: white;

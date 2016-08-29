@@ -12,7 +12,6 @@ export default Ember.Route.extend({
 
     setupController: function (controller, model) {
         this._super(controller, model);
-
         controller.set('formTitle', 'Add a new piece of gear');
         controller.set('saveLabel', 'CREATE');
     },

@@ -12,9 +12,9 @@ export default Ember.Route.extend({
 
     setupController: function (controller, model) {
         this._super(controller, model);
-
         controller.set('formTitle', 'Mod this piece of gear');
         controller.set('saveLabel', 'COMMIT MOD');
+        controller.set('editProductRoute', this);
     },
 
     renderTemplate() {
