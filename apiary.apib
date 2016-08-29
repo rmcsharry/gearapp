@@ -1,13 +1,15 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://galaxygearapp.herokuapp.com/
 
 # galaxygearapp
 
-Simple API to return items of gear for Rebel Fighters and Stormtroopers
+Simple API to return items of gear (called Products in the API) for Rebel Fighters and Stormtroopers.
+It follows the JSONAPI standard, with 'data' as the root notde of each object. Related objects are contained
+in 'relationships' object nodes.
 
 ## Products Collection [/products.json]
 
-### List All Questions [GET]
+### List All Products [GET]
 
 + Response 200 (application/json)
 
@@ -78,48 +80,104 @@ Simple API to return items of gear for Rebel Fighters and Stormtroopers
            ]
         }
 
-### Create a New Question [POST]
+### Create a New Product [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+Accepts a single object containing a product and two relationship objects.
+
+#### Required fields:
+
+    String: name (cannot be blank/null/empty)
+
+#### Relationship objects:
+
+    Category (required): the category id
+    Manufacturer (optional): the manufacturer id. Can be null it not needed, eg:
+    
+    "manufacturer":{
+        "data":null
+        }
+     }
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+           "data":{
+              "attributes":{
+                 "name":"test",
+                 "description":null,
+                 "weight-value":null,
+                 "weight-unit":null,
+                 "is-shared":false,
+                 "shared-capacity":null
+              },
+              "relationships":{
+                 "category":{
+                    "data":{
+                       "type":"categories",
+                       "id":"7"
+                    }
+                 },
+                 "manufacturer":{
+                    "data":{
+                       "type":"manufacturers",
+                       "id":"1"
+                    }
+                 }
+              },
+              "type":"products"
+           }
         }
 
 + Response 201 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+               "data":{
+                  "id":"20",
+                  "type":"products",
+                  "attributes":{
+                     "name":"test2",
+                     "description":null,
+                     "is-shared":false,
+                     "shared-capacity":null,
+                     "weight-value":null,
+                     "weight-unit":null
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"7",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+                        ]
+                     }
+                  }
+               }
             }
+            
+
+### Delete a New Product [DELETE]
+
+Supply the ID of the product to delete at the end of the url. No body required.
+
+#### Required fields:
+
+    ProductID: at the end of the url
+
+#### Relationship objects:
+
+    None
+    
++ Request (application/json)
+
++ Response 204
