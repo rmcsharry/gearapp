@@ -95,10 +95,12 @@ Paging is not currently supported.
                ]
             }
 
+
 ## Product [/products/{product_id}.json]
 
 + Parameters
     + product_id (number) - id of the product as an integer
+
 
 ### View a Product [GET]
 
@@ -107,7 +109,6 @@ Returns a product and its related object ids (if they exist).
 #### Required:
 
     id: the unique id of the product, supplied in the url
-    name: the name of the product, which cannot be blank/null/empty (or returns a 404)
 
 #### Relationship objects:
 
@@ -117,14 +118,31 @@ Returns a product and its related object ids (if they exist).
 
     + Body
 
+
+### Delete a Product [DELETE]
+
+Deletes the product with the given product_id. No body required.
+
+#### Required:
+
+    id: the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+    None (returned in response body)
+
++ Response 204 (application/json)
+
+    + Body
+    
+
 ### Create a New Product [POST]
 
 Accepts a data object containing a product and the ids of its related objects.
 
 #### Required:
 
-    id: the unique id of the product, supplied in the url
-    name: the name of the product, which cannot be blank/null/empty (or returns a 404)
+    name: the name of the product, which cannot be blank/null/empty
 
 #### Relationship objects:
 
