@@ -294,4 +294,76 @@ Updates a product (if it exists) and returns the updated data.
 
 + Request (application/json)
 
-+ Response 204
+    + Body
+            
+            {
+               "data":{
+                  "id":"2",
+                  "type":"products",
+                  "attributes":{
+                     "name":"Munitions Belt Test",
+                     "description":"Easy access to the ammo you need.",
+                     "is-shared":false,
+                     "shared-capacity":0,
+                     "weight-value":"150.0",
+                     "weight-unit":"g"
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"1",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+            
+                        ]
+                     }
+                  }
+               }
+            }    
+
++ Response 204 (application/json)
+
+    + Body
+            
+            {
+               "data":{
+                  "id":"2",
+                  "type":"products",
+                  "attributes":{
+                     "name":"Munitions Belt Test",
+                     "description":"Easy access to the ammo you need.",
+                     "is-shared":false,
+                     "shared-capacity":0,
+                     "weight-value":"150.0",
+                     "weight-unit":"g"
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"1",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+            
+                        ]
+                     }
+                  }
+               }
+            }
