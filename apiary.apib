@@ -9,11 +9,14 @@ in 'relationships' object nodes.
 
 ## Products Collection [/products.json]
 
+
 ### List All Products [GET]
 
 Returns all products and their related object ids (if they exist).
 
-Paging is not currently supported.
+**NOTE**
+
+Paging is not currently supported, so the full collection is returned.
 
 #### Required:
 
@@ -21,7 +24,7 @@ Paging is not currently supported.
 
 #### Relationship objects:
 
-```Not applicable```  (objects are returned in response body)
+```Not applicable```  (related object ids are returned in response body)
 
 
 + Response 200 (application/json)
@@ -96,80 +99,9 @@ Paging is not currently supported.
             }
 
 
-## Product [/products/{product_id}.json]
-
-+ Parameters
-    + product_id (number) - id of the product as an integer
-
-
-### View a Product [GET]
-
-Returns a product and its related object ids (if they exist).
-
-#### Required:
-
-```id``` :  the unique id of the product, supplied in the url
-
-#### Relationship objects:
-
-```Not applicable```  (related objects are returned in response body)
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-              "data": {
-                "id": "5",
-                "type": "products",
-                "attributes": {
-                  "name": "Platoon Tent",
-                  "description": "Built in forcefiled protection for your entire platoon!",
-                  "is-shared": true,
-                  "shared-capacity": 20,
-                  "weight-value": "10000.0",
-                  "weight-unit": "g"
-                },
-                "relationships": {
-                  "manufacturer": {
-                    "data": {
-                      "id": "1",
-                      "type": "manufacturers"
-                    }
-                  },
-                  "category": {
-                    "data": {
-                      "id": "2",
-                      "type": "categories"
-                    }
-                  },
-                  "product-assets": {
-                    "data": []
-                  }
-                }
-              }
-            }
-
-### Delete a Product [DELETE]
-
-Deletes the product with the provided product_id (if it exists).
-
-#### Required:
-
-```id``` : the unique id of the product, supplied in the url
-
-#### Relationship objects:
-
-```Not applicable```  
-
-+ Request (application/json)
-
-+ Response 204 (application/json)
-
-
 ### Create a new Product [POST]
 
-Creates a new product with the provided data object and the ids of its related objects.
+Creates a new product in the products collection with the provided data object and creates relationships using the ids of the provided related objects. The category_id of an existing category must be provided, as well as a name for the product (the name does not need to be unique).
 
 #### Required:
 
@@ -191,6 +123,8 @@ Creates a new product with the provided data object and the ids of its related o
 **NOTE**
 
 ```product_assets``` are not fully implemented and currently will return a null object in the response.
+
+The response data object contains the id of the newly created product and its type.
 
 + Request (application/json)
 
@@ -261,14 +195,85 @@ Creates a new product with the provided data object and the ids of its related o
                }
             }
             
+## Product [/products/{product_id}.json]
+
++ Parameters
+    + product_id (number) - id of the product as an integer
+
+
+### View a Product [GET]
+
+Returns a product and its related object ids (if they exist).
+
+#### Required:
+
+```id``` :  the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+```Not applicable```  (related object ids are returned in response body)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "data": {
+                "id": "5",
+                "type": "products",
+                "attributes": {
+                  "name": "Platoon Tent",
+                  "description": "Built in forcefiled protection for your entire platoon!",
+                  "is-shared": true,
+                  "shared-capacity": 20,
+                  "weight-value": "10000.0",
+                  "weight-unit": "g"
+                },
+                "relationships": {
+                  "manufacturer": {
+                    "data": {
+                      "id": "1",
+                      "type": "manufacturers"
+                    }
+                  },
+                  "category": {
+                    "data": {
+                      "id": "2",
+                      "type": "categories"
+                    }
+                  },
+                  "product-assets": {
+                    "data": []
+                  }
+                }
+              }
+            }
+
+
+### Delete a Product [DELETE]
+
+Deletes a product (if it exists).
+
+#### Required:
+
+```id``` : the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+```Not applicable```  
+
++ Request (application/json)
+
++ Response 204 (application/json)
+
 
 ### Update a Product [PATCH]
 
-Updates the product with the provided id (if it exists) and returns the updated data.
+Updates a product (if it exists) and returns the updated data.
 
 #### Required fields:
 
-```product_id``` : at the end of the url
+```id``` : the unique id of the product, supplied in the url
 
 #### Relationship objects:
 
@@ -287,7 +292,6 @@ Updates the product with the provided id (if it exists) and returns the updated 
 
 ```product_assets``` are not fully implemented and currently will return a null object in the response.
 
-    
 + Request (application/json)
 
 + Response 204
