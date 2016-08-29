@@ -17,11 +17,11 @@ Paging is not currently supported.
 
 #### Required:
 
-    None
+```None```  (no required attributes or body)
 
 #### Relationship objects:
 
-    None (returned in response body)
+```Not applicable```  (objects are returned in response body)
 
 
 + Response 200 (application/json)
@@ -108,11 +108,11 @@ Returns a product and its related object ids (if they exist).
 
 #### Required:
 
-    id: the unique id of the product, supplied in the url
+```id``` :  the unique id of the product, supplied in the url
 
 #### Relationship objects:
 
-    None (returned in response body)
+```Not applicable```  (related objects are returned in response body)
 
 + Response 200 (application/json)
 
@@ -152,15 +152,15 @@ Returns a product and its related object ids (if they exist).
 
 ### Delete a Product [DELETE]
 
-Deletes the product with the given product_id.
+Deletes the product with the provided product_id (if it exists).
 
 #### Required:
 
-    id: the unique id of the product, supplied in the url
+```id``` : the unique id of the product, supplied in the url
 
 #### Relationship objects:
 
-    None (returned in response body)
+```Not applicable```  
 
 + Request (application/json)
 
@@ -173,17 +173,24 @@ Accepts a data object containing a product and the ids of its related objects.
 
 #### Required:
 
-    name: the name of the product, which cannot be blank/null/empty
+```name``` : the name of the product, which cannot be blank/null/empty
 
 #### Relationship objects:
 
-    Category (required): the category id
-    Manufacturer (optional): the manufacturer id. Can be null it not needed, eg:
+```category``` : the category_id (required, category must already exist)
+
+```manufacturer``` : the manufacturer_id. Can be null it not needed, eg:
     
-    "manufacturer":{
-        "data":null
-        }
-     }
+        "manufacturer":{
+            "data":null
+            }
+         }
+    
+```product_assets``` : an array of images, PDF's etc related to the product.
+    
+**NOTE**
+
+```product_assets``` are not fully implemented and currently will return a null object in the response.
 
 + Request (application/json)
 
