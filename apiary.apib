@@ -11,17 +11,17 @@ in 'relationships' object nodes.
 
 ### List All Products [GET]
 
-Returns all products and their related objects (if they exist).
+Returns all products and their related object ids (if they exist).
 
 Paging is not currently supported.
 
 #### Required:
 
-    None.
+    None
 
 #### Relationship objects:
 
-    None (returned in response body).
+    None (returned in response body)
 
 
 + Response 200 (application/json)
@@ -106,18 +106,12 @@ Returns a product and its related object ids (if they exist).
 
 #### Required:
 
-    String: name (cannot be blank/null/empty)
+    id: the unique id of the product, supplied in the url
+    name: the name of the product, which cannot be blank/null/empty (or returns a 404)
 
 #### Relationship objects:
 
-    Category (required): the category id
-    Manufacturer (optional): the manufacturer id. Can be null it not needed, eg:
-    
-    "manufacturer":{
-        "data":null
-        }
-     }
-
+    None (returned in response body)
 
 + Response 200 (application/json)
 
@@ -125,11 +119,12 @@ Returns a product and its related object ids (if they exist).
 
 ### Create a New Product [POST]
 
-Accepts a single object containing a product and two relationship objects.
+Accepts a data object containing a product and the ids of its related objects.
 
 #### Required:
 
-    String: name (cannot be blank/null/empty)
+    id: the unique id of the product, supplied in the url
+    name: the name of the product, which cannot be blank/null/empty (or returns a 404)
 
 #### Relationship objects:
 
