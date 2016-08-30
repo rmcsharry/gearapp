@@ -1,0 +1,369 @@
+FORMAT: 1A
+HOST: http://galaxygearapp.herokuapp.com/
+
+# galaxygearapp
+
+A simple API to return items of gear (called Products) for Rebel Fighters and Stormtroopers.
+It follows the JSONAPI standard, with 'data' as the root node of each object. Related objects are contained
+in 'relationships' object nodes.
+
+## Products Collection [/products.json]
+
+
+### List All Products [GET]
+
+Returns all products and their related object ids (if they exist).
+
+**NOTE**
+
+Paging is not currently supported, so the full collection is returned.
+
+#### Required:
+
+```None```  (no required attributes or body)
+
+#### Relationship objects:
+
+```Not applicable```  (related object ids are returned in response body)
+
+
++ Response 200 (application/json)
+
+    + Body
+        
+            {
+               "data":[
+                  {
+                     "id":"3",
+                     "type":"products",
+                     "attributes":{
+                        "name":"LoneTrooper Tent",
+                        "description":"Ideal for Troopers going off on lone suicidal missions. Automatically returns to us when you die. The Empire must recycle!",
+                        "is-shared":false,
+                        "shared-capacity":0,
+                        "weight-value":"1000.0",
+                        "weight-unit":"g"
+                     },
+                     "relationships":{
+                        "manufacturer":{
+                           "data":{
+                              "id":"1",
+                              "type":"manufacturers"
+                           }
+                        },
+                        "category":{
+                           "data":{
+                              "id":"2",
+                              "type":"categories"
+                           }
+                        },
+                        "product-assets":{
+                           "data":[
+            
+                           ]
+                        }
+                     }
+                  },
+                  {
+                     "id":"4",
+                     "type":"products",
+                     "attributes":{
+                        "name":"Squad Tent",
+                        "description":"Perfect for that cosy squad feeling after a hard day killing Rebel Scum",
+                        "is-shared":true,
+                        "shared-capacity":4,
+                        "weight-value":"2000.0",
+                        "weight-unit":"g"
+                     },
+                     "relationships":{
+                        "manufacturer":{
+                           "data":{
+                              "id":"1",
+                              "type":"manufacturers"
+                           }
+                        },
+                        "category":{
+                           "data":{
+                              "id":"2",
+                              "type":"categories"
+                           }
+                        },
+                        "product-assets":{
+                           "data":[
+            
+                           ]
+                        }
+                     }
+                  }
+               ]
+            }
+
+
+### Create a new Product [POST]
+
+Creates a new product in the products collection with the provided data object and creates relationships using the ids of the provided related objects. The category_id of an existing category must be provided, as well as a name for the product (the name does not need to be unique).
+
+#### Required:
+
+```name``` : the name of the product, which cannot be blank/null/empty
+
+#### Relationship objects:
+
+```category``` : the category_id (required, category must already exist)
+
+```manufacturer``` : the manufacturer_id. Can be null it not needed, eg:
+    
+        "manufacturer":{
+            "data":null
+            }
+         }
+    
+```product_assets``` : an array of images, PDF's etc related to the product.
+    
+**NOTE**
+
+```product_assets``` are not fully implemented and currently will return a null object in the response.
+
+The root of the response data object will contain the id and type of the newly created product.
+
++ Request (application/json)
+
+    + Body
+    
+            {
+               "data":{
+                  "attributes":{
+                     "name":"Test Item",
+                     "description":null,
+                     "weight-value":null,
+                     "weight-unit":null,
+                     "is-shared":false,
+                     "shared-capacity":null
+                  },
+                  "relationships":{
+                     "category":{
+                        "data":{
+                           "type":"categories",
+                           "id":"7"
+                        }
+                     },
+                     "manufacturer":{
+                        "data":{
+                           "type":"manufacturers",
+                           "id":"1"
+                        }
+                     }
+                  },
+                  "type":"products"
+               }
+            }
+
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+               "data":{
+                  "id":"20",
+                  "type":"products",
+                  "attributes":{
+                     "name":"Test Item",
+                     "description":null,
+                     "is-shared":false,
+                     "shared-capacity":null,
+                     "weight-value":null,
+                     "weight-unit":null
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"7",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+                        ]
+                     }
+                  }
+               }
+            }
+            
+## Product [/products/{product_id}.json]
+
++ Parameters
+    + product_id (number) - id of the product as an integer
+
+
+### View a Product [GET]
+
+Returns a product and its related object ids (if they exist).
+
+#### Required:
+
+```id``` :  the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+```Not applicable```  (related object ids are returned in response body)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "data": {
+                "id": "5",
+                "type": "products",
+                "attributes": {
+                  "name": "Platoon Tent",
+                  "description": "Built in forcefiled protection for your entire platoon!",
+                  "is-shared": true,
+                  "shared-capacity": 20,
+                  "weight-value": "10000.0",
+                  "weight-unit": "g"
+                },
+                "relationships": {
+                  "manufacturer": {
+                    "data": {
+                      "id": "1",
+                      "type": "manufacturers"
+                    }
+                  },
+                  "category": {
+                    "data": {
+                      "id": "2",
+                      "type": "categories"
+                    }
+                  },
+                  "product-assets": {
+                    "data": []
+                  }
+                }
+              }
+            }
+
+
+### Delete a Product [DELETE]
+
+Deletes a product (if it exists).
+
+#### Required:
+
+```id``` : the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+```Not applicable```  
+
++ Request (application/json)
+
++ Response 204 (application/json)
+
+
+### Update a Product [PATCH]
+
+Updates a product (if it exists) and returns the updated data.
+
+#### Required fields:
+
+```id``` : the unique id of the product, supplied in the url
+
+#### Relationship objects:
+
+```category``` : the category_id (required, category must already exist)
+
+```manufacturer``` : the manufacturer_id. Can be null if not needed, eg:
+    
+        "manufacturer":{
+            "data":null
+            }
+         }
+    
+```product_assets``` : an array of images, PDF's etc related to the product.
+    
+**NOTE**
+
+```product_assets``` are not fully implemented and currently will return a null object in the response.
+
+The root of the response data object will contain the id and type of the updated product. The request payload could also include them and the update would still work.
+
++ Request (application/json)
+
+    + Body
+            
+            {
+               "data":{
+                  "attributes":{
+                     "name":"Munitions Belt TestORama",
+                     "description":"Easy access to the ammo you need.",
+                     "is-shared":false,
+                     "shared-capacity":0,
+                     "weight-value":"150.0",
+                     "weight-unit":"g"
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"1",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+            
+                        ]
+                     }
+                  }
+               }
+            }    
+
++ Response 200 (application/json)
+
+    + Body
+            
+            {
+               "data":{
+                  "id":"2",
+                  "type":"products",
+                  "attributes":{
+                     "name":"Munitions Belt Test",
+                     "description":"Easy access to the ammo you need.",
+                     "is-shared":false,
+                     "shared-capacity":0,
+                     "weight-value":"150.0",
+                     "weight-unit":"g"
+                  },
+                  "relationships":{
+                     "manufacturer":{
+                        "data":{
+                           "id":"1",
+                           "type":"manufacturers"
+                        }
+                     },
+                     "category":{
+                        "data":{
+                           "id":"1",
+                           "type":"categories"
+                        }
+                     },
+                     "product-assets":{
+                        "data":[
+            
+                        ]
+                     }
+                  }
+               }
+            }
