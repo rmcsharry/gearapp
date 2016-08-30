@@ -1,18 +1,21 @@
 export default {
+
   colors: [
-    '#258be2',
-    '#666666',
-    '#f45b5b',
-    '#8085e9',
-    '#8d4654',
-    '#7798bf',
-    '#aaeeee',
-    '#ff0066',
-    '#eeaaee',
-    '#55bf3b',
-    '#df5353',
-    '#7798bf',
-    '#aaeeee'
+    '#a66e25',
+    '#846571',
+    '#788a6d',
+    '#565e69',
+    '#496793',
+    '#6f8443',
+    '#7e6c3c',
+    '#974637',
+    '#a690ab',
+    '#ffac9f',
+    '#67a5e5',
+    '#7a71e9',
+    '#e58100',
+    '#d2002d',
+    '#827565',
   ],
   chart: {
     backgroundColor: null,
@@ -23,7 +26,7 @@ export default {
   title: {
     style: {
       color: 'black',
-      //fontSize: '18px',
+      fontSize: '18px',
       fontWeight: 'bold'
     }
   },

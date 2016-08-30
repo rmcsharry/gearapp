@@ -3,16 +3,6 @@ import defaultTheme from '../highcharts/themes/default-theme';
 
 export default Ember.Component.extend({
 
-  summaryData: [{
-    name: 'gear',
-    colorByPoint: true,
-    data: [
-        {y: 10, name: 'Test1'},
-        {y: 12, name: 'Test2'},
-        {y: 40, name: 'Test3'}
-        ]
-  }],
-
   summaryOptions: {
     chart: {
         plotBackgroundColor: null,
@@ -21,7 +11,7 @@ export default Ember.Component.extend({
         type: 'pie'
     },
     title: {
-        text: 'Total weight of gear in each category'
+        text: 'Total weight of gear in each category (grams)'
     },
     tooltip: {
         pointFormat: '<b>{point.percentage:.1f}%</b> of {series.name}'
@@ -50,7 +40,7 @@ export default Ember.Component.extend({
         verticalAlign: 'top',
         layout: 'vertical',
         x: 0,
-        y: 100
+        y: 60
     }        
   },
 
