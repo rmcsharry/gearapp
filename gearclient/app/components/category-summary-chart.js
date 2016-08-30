@@ -2,6 +2,7 @@ import Ember from 'ember';
 import defaultTheme from '../highcharts/themes/default-theme';
 
 export default Ember.Component.extend({
+  me: 'blah',
 
   summaryOptions: {
     chart: {
@@ -11,7 +12,10 @@ export default Ember.Component.extend({
         type: 'pie'
     },
     title: {
-        text: 'Total weight of gear in each category (grams)'
+        text: 'Total weight of gear in each category'
+    },
+    subtitle: {
+        text: '( hover segments for info )'
     },
     tooltip: {
         pointFormat: '<b>{point.percentage:.1f}%</b> of {series.name}'
@@ -28,6 +32,7 @@ export default Ember.Component.extend({
     },
 
     legend: {
+        enabled: true,
         title: {
             text: '<span style="font-size: 14px;">Categories</span><br/><span style="font-size: 10px; color: #666; font-weight: normal">(Click to hide)</span>',
         },

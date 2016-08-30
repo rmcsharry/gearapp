@@ -32,7 +32,8 @@ export default {
   },
   subtitle: {
     style: {
-      color: 'black'
+      color: 'black',
+      fontSize: '14px',
     }
   },
   tooltip: {

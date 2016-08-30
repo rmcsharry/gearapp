@@ -3,7 +3,7 @@ class Category < ApplicationRecord
 
   def total_weight
     total_grams ||= total_products(:g)
-    total_ounces ||= total_products(:oz)
+    total_ounces ||= total_products(:ounces)
     Hash.[](grams: (total_grams + total_ounces.convert_to(:g)).value,
             ounces: (total_ounces + total_grams.convert_to(:oz)).value)
   end
