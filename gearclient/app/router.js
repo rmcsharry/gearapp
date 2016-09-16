@@ -20,7 +20,7 @@ Router.map(function() {
   });
 
   this.route('product-assets');
-  
+
   this.route('dashboard', function() {
     this.route('grams');
     this.route('ounces');

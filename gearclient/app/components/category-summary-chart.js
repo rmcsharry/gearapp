@@ -2,7 +2,6 @@ import Ember from 'ember';
 import defaultTheme from '../highcharts/themes/default-theme';
 
 export default Ember.Component.extend({
-  me: 'blah',
 
   summaryOptions: {
     chart: {
